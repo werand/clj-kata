@@ -59,4 +59,9 @@
           (calculate-price [0 0 0 1 1 1 1 2 2 2 3 3 3 3 3 3 4 4 4 4 4 4])))
   ; 108
   (is (== (+ (* 3 (discount 4)) (discount 2) (* 2 (discount 1)))
-          (calculate-price [0 0 0 1 1 1 1 2 2 2 3 3 3 3 3 3]))))
+          (calculate-price [0 0 0 1 1 1 1 2 2 2 3 3 3 3 3 3])))
+  ; This test runs in 2.7 msecs
+  ; The sample solution here http://geekswithblogs.net/thomasweller/archive/2009/11/08/solving-katapotter-or-what-kind-of-developer-are-you.aspx
+  ; states it requres ~20 secs to find the price
+  (is (== 468.40
+          (calculate-price (flatten [(repeat 12 1) (repeat 17 2) (repeat 15 3) (repeat 8 4) (repeat 21 5)])))))
